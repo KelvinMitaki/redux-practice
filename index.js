@@ -1,7 +1,11 @@
 const express = require("express");
 const mongoose = require("mongoose");
 
+const todoRoutes = require("./controllers/todo");
+
 const app = express();
+
+app.use(todoRoutes);
 
 const mongooseConnect = async () => {
   try {
