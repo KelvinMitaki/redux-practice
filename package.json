@@ -4,13 +4,14 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "dev": "env-cmd -f config/keys.env nodemon index.js"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
     "axios": "^0.19.2",
+    "env-cmd": "^10.1.0",
     "express": "^4.17.1",
     "mongoose": "^5.9.19",
     "react-redux": "^7.2.0",
