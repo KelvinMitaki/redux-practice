@@ -1,7 +1,7 @@
 const route = require("express").Router();
 const Todo = require("../models/Todo");
 
-route.post("/", async (req, res) => {
+route.post("/api", async (req, res) => {
   try {
     const { text } = req.body;
     const todo = new Todo({
@@ -13,7 +13,7 @@ route.post("/", async (req, res) => {
     res.status(500).send(error);
   }
 });
-route.delete("/:id", async (req, res) => {
+route.delete("/api/:id", async (req, res) => {
   try {
     const { id } = req.params;
     await Todo.findByIdAndDelete(id);

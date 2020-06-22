@@ -4,7 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev": "env-cmd -f config/keys.env nodemon index.js"
+    "server": "env-cmd -f config/keys.env nodemon index.js",
+    "client": "npm run start --prefix ./views",
+    "dev": "concurrently \"npm run server\" \"npm run client\""
   },
   "keywords": [],
   "author": "",
@@ -12,11 +14,9 @@
   "dependencies": {
     "axios": "^0.19.2",
     "body-parser": "^1.19.0",
+    "concurrently": "^5.2.0",
     "env-cmd": "^10.1.0",
     "express": "^4.17.1",
-    "mongoose": "^5.9.19",
-    "react-redux": "^7.2.0",
-    "redux": "^4.0.5",
-    "redux-thunk": "^2.3.0"
+    "mongoose": "^5.9.19"
   }
 }
