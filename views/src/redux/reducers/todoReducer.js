@@ -1,6 +1,6 @@
 const INITIAL_STATE = {
   todos: null,
-  text: null
+  text: ""
 };
 
 export default (state = INITIAL_STATE, action) => {
@@ -9,6 +9,8 @@ export default (state = INITIAL_STATE, action) => {
       return { ...state, todos: action.payload };
     case "HANDLE_CHANGE":
       return { ...state, text: action.payload };
+    case "HANDLE_SUBMIT":
+      return { ...state, text: "" };
     default:
       return state;
   }

@@ -4,16 +4,29 @@ import { connect } from "react-redux";
 
 class Todo extends Component {
   render() {
-    const { handleChange, handleSubmit } = this.props;
+    const { handleChange, handleSubmit, todos, text } = this.props;
+    console.log(text);
     return (
       <div>
         <form onSubmit={handleSubmit}>
-          <input onChange={handleChange} type="text" />
+          <input onChange={handleChange} type="text" value={text} />
           <button>Add Todo</button>
         </form>
+        {todos &&
+          todos.map(todo => (
+            <div key={todo._id}>
+              <p> {todo.body}</p>
+            </div>
+          ))}
       </div>
     );
   }
 }
 
-export default connect(null, { handleChange, handleSubmit })(Todo);
+const mapStateToProps = state => {
+  return {
+    todos: state.todo.todos,
+    text: state.todo.text
+  };
+};
+export default connect(mapStateToProps, { handleChange, handleSubmit })(Todo);
