@@ -1,6 +1,15 @@
 const route = require("express").Router();
 const Todo = require("../models/Todo");
 
+route.get("/api", async (req, res) => {
+  try {
+    const todo = await Todo.find();
+    res.send(todo);
+  } catch (error) {
+    res.status(500).send(error);
+  }
+});
+
 route.post("/api", async (req, res) => {
   try {
     const { text } = req.body;

@@ -1,11 +1,14 @@
 import React, { Component } from "react";
+import { handleChange, handleSubmit } from "./redux/actions";
+import { connect } from "react-redux";
 
 class Todo extends Component {
   render() {
+    const { handleChange, handleSubmit } = this.props;
     return (
       <div>
-        <form>
-          <input type="text" />
+        <form onSubmit={handleSubmit}>
+          <input onChange={handleChange} type="text" />
           <button>Add Todo</button>
         </form>
       </div>
@@ -13,4 +16,4 @@ class Todo extends Component {
   }
 }
 
-export default Todo;
+export default connect(null, { handleChange, handleSubmit })(Todo);
